@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:mobx/mobx.dart';
 
 part 'timer_store.g.dart';
@@ -9,4 +11,16 @@ abstract class _TimerStoreBase with Store {
 
   @observable
   String timerTable = "pomodoro";
+
+  @observable
+  bool started = false;
+
+  @observable
+  int seconds = 1500;
+
+  @observable
+  Timer? timer;
+
+  @observable
+  int breakCount = 0;
 }

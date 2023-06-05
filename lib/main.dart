@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pomodoro_timer_flutter/timer.dart';
 
 void main() {
@@ -72,27 +73,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        body: Container(
+      margin: EdgeInsets.only(top: 50),
+      decoration: BoxDecoration(
+        color: Colors.red[300],
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Colors.green[100],
-        ),
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TimerWidget(),
-          ],
-        ),
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Observer(builder: (_) {
+            return const TimerWidget();
+          })
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }

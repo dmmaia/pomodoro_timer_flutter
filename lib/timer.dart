@@ -94,7 +94,7 @@ class _TimerWidgetState extends State<TimerWidget> {
       margin: EdgeInsets.only(top: 20),
       height: 300,
       decoration: BoxDecoration(
-        color: Colors.red[900],
+        color: Colors.red[600],
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
@@ -117,8 +117,8 @@ class _TimerWidgetState extends State<TimerWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                   decoration: BoxDecoration(
                     color: store.timerTable == "pomodoro"
-                        ? Colors.red[900]
-                        : Colors.red.shade300,
+                        ? Colors.red[600]
+                        : Colors.red.shade800,
                     border: store.timerTable == "pomodoro"
                         ? Border(
                             right: BorderSide(color: Colors.white),
@@ -132,7 +132,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                         fontSize: 20,
                         color: store.timerTable == "pomodoro"
                             ? Colors.white
-                            : Colors.red[900]),
+                            : Colors.red[200]),
                   ),
                 ),
               ),
@@ -151,8 +151,8 @@ class _TimerWidgetState extends State<TimerWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                   decoration: BoxDecoration(
                     color: store.timerTable == "short_break"
-                        ? Colors.red[900]
-                        : Colors.red.shade300,
+                        ? Colors.red[600]
+                        : Colors.red.shade800,
                     border: store.timerTable == "short_break"
                         ? Border(
                             right: BorderSide(color: Colors.white),
@@ -166,7 +166,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                         fontSize: 20,
                         color: store.timerTable == "short_break"
                             ? Colors.white
-                            : Colors.red[900]),
+                            : Colors.red[200]),
                   ),
                 ),
               ),
@@ -185,8 +185,8 @@ class _TimerWidgetState extends State<TimerWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                   decoration: BoxDecoration(
                     color: store.timerTable == "long_break"
-                        ? Colors.red[900]
-                        : Colors.red.shade300,
+                        ? Colors.red[600]
+                        : Colors.red.shade800,
                     border: store.timerTable == "long_break"
                         ? Border(
                             right: BorderSide(color: Colors.white),
@@ -200,7 +200,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                         fontSize: 20,
                         color: store.timerTable == "long_break"
                             ? Colors.white
-                            : Colors.red[900]),
+                            : Colors.red[200]),
                   ),
                 ),
               )
@@ -227,7 +227,7 @@ class _TimerWidgetState extends State<TimerWidget> {
                       "Pause",
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.black,
+                        color: Colors.red[900],
                       ),
                     ),
                   )

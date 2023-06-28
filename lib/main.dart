@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      margin: EdgeInsets.only(top: 50),
+      padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
       decoration: BoxDecoration(
         color: Colors.red[800],
       ),

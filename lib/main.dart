@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Container(
       padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
       decoration: BoxDecoration(
-        color: Colors.red[800],
+        color: const Color.fromARGB(255, 243, 191, 191),
       ),
       width: MediaQuery.of(context).size.width,
       child: Column(

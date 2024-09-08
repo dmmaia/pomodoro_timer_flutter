@@ -93,165 +93,172 @@ class _TimerWidgetState extends State<TimerWidget> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.90,
-        margin: EdgeInsets.only(top: 20),
-        height: 300,
-        decoration: BoxDecoration(
-          color: Colors.red[600],
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          children: [
-            Row(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (store.timerTable != "long_break") {
+                      if (store.timer != null) store.timer!.cancel();
+                      store.started = false;
+                      changeTimerByTab("long_break");
+                    }
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                  decoration: BoxDecoration(
+                    color: store.timerTable == "long_break"
+                        ? Colors.red[600]
+                        : Colors.red.shade800,
+                    border: store.timerTable == "long_break"
+                        ? Border(
+                            right: BorderSide(color: Colors.white),
+                            top: BorderSide(color: Colors.white),
+                            left: BorderSide(color: Colors.white))
+                        : Border(),
+                  ),
+                  child: Text(
+                    "Long Break",
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: store.timerTable == "long_break"
+                            ? Colors.white
+                            : Colors.red[200]),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (store.timerTable != "pomodoro") {
+                      if (store.timer != null) store.timer!.cancel();
+                      store.started = false;
+                      changeTimerByTab("pomodoro");
+                    }
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, left: 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                  decoration: BoxDecoration(
+                    color: store.timerTable == "pomodoro"
+                        ? Colors.red[600]
+                        : Colors.red.shade800,
+                    border: store.timerTable == "pomodoro"
+                        ? Border(
+                            right: BorderSide(color: Colors.white),
+                            top: BorderSide(color: Colors.white),
+                            left: BorderSide(color: Colors.white))
+                        : Border(),
+                  ),
+                  child: Text(
+                    "Work",
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: store.timerTable == "pomodoro"
+                            ? Colors.white
+                            : Colors.red[200]),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (store.timerTable != "short_break") {
+                      if (store.timer != null) store.timer!.cancel();
+                      store.started = false;
+                      changeTimerByTab("short_break");
+                    }
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, left: 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                  decoration: BoxDecoration(
+                    color: store.timerTable == "short_break"
+                        ? Colors.red[600]
+                        : Colors.red.shade800,
+                    border: store.timerTable == "short_break"
+                        ? Border(
+                            right: BorderSide(color: Colors.white),
+                            top: BorderSide(color: Colors.white),
+                            left: BorderSide(color: Colors.white))
+                        : Border(),
+                  ),
+                  child: Text(
+                    "Short Break",
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: store.timerTable == "short_break"
+                            ? Colors.white
+                            : Colors.red[200]),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.90,
+            margin: EdgeInsets.only(top: 20),
+            height: 300,
+            decoration: BoxDecoration(
+              color: Colors.red[600],
+              borderRadius: BorderRadius.circular(300),
+            ),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      if (store.timerTable != "pomodoro") {
-                        if (store.timer != null) store.timer!.cancel();
-                        store.started = false;
-                        changeTimerByTab("pomodoro");
-                      }
-                    });
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10),
-                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                    decoration: BoxDecoration(
-                      color: store.timerTable == "pomodoro"
-                          ? Colors.red[600]
-                          : Colors.red.shade800,
-                      border: store.timerTable == "pomodoro"
-                          ? Border(
-                              right: BorderSide(color: Colors.white),
-                              top: BorderSide(color: Colors.white),
-                              left: BorderSide(color: Colors.white))
-                          : Border(),
-                    ),
-                    child: Text(
-                      "Pomodoro",
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: store.timerTable == "pomodoro"
-                              ? Colors.white
-                              : Colors.red[200]),
-                    ),
-                  ),
+                Text(
+                  formatedTime(store.seconds),
+                  style: TextStyle(fontSize: 100, color: Colors.white),
                 ),
                 InkWell(
                   onTap: () {
                     setState(() {
-                      if (store.timerTable != "short_break") {
-                        if (store.timer != null) store.timer!.cancel();
-                        store.started = false;
-                        changeTimerByTab("short_break");
-                      }
+                      startTimer();
                     });
                   },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10, right: 10, left: 10),
-                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                    decoration: BoxDecoration(
-                      color: store.timerTable == "short_break"
-                          ? Colors.red[600]
-                          : Colors.red.shade800,
-                      border: store.timerTable == "short_break"
-                          ? Border(
-                              right: BorderSide(color: Colors.white),
-                              top: BorderSide(color: Colors.white),
-                              left: BorderSide(color: Colors.white))
-                          : Border(),
-                    ),
-                    child: Text(
-                      "Short Break",
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: store.timerTable == "short_break"
-                              ? Colors.white
-                              : Colors.red[200]),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      if (store.timerTable != "long_break") {
-                        if (store.timer != null) store.timer!.cancel();
-                        store.started = false;
-                        changeTimerByTab("long_break");
-                      }
-                    });
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10),
-                    padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
-                    decoration: BoxDecoration(
-                      color: store.timerTable == "long_break"
-                          ? Colors.red[600]
-                          : Colors.red.shade800,
-                      border: store.timerTable == "long_break"
-                          ? Border(
-                              right: BorderSide(color: Colors.white),
-                              top: BorderSide(color: Colors.white),
-                              left: BorderSide(color: Colors.white))
-                          : Border(),
-                    ),
-                    child: Text(
-                      "Long Break",
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: store.timerTable == "long_break"
-                              ? Colors.white
-                              : Colors.red[200]),
-                    ),
-                  ),
+                  child: store.started
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red[300],
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(30, 15, 30, 15),
+                          child: Text(
+                            "❚❚",
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.red[900],
+                            ),
+                          ),
+                        )
+                      : Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(30, 15, 30, 15),
+                          child: Text(
+                            "▶",
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.red[800],
+                            ),
+                          ),
+                        ),
                 )
               ],
             ),
-            Text(
-              formatedTime(store.seconds),
-              style: TextStyle(fontSize: 100, color: Colors.white),
-            ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  startTimer();
-                });
-              },
-              child: store.started
-                  ? Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red[300],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsetsDirectional.fromSTEB(30, 15, 30, 15),
-                      child: Text(
-                        "Pause",
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.red[900],
-                        ),
-                      ),
-                    )
-                  : Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsetsDirectional.fromSTEB(30, 15, 30, 15),
-                      child: Text(
-                        "Start",
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.red[800],
-                        ),
-                      ),
-                    ),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
